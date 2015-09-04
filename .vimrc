@@ -11,6 +11,7 @@
 "endtry
 
 execute pathogen#infect()
+call pathogen#helptags()
 " Maintainer: Wilson Daito Co
 " Modified Date: 09/02/2015
 " When started as "evim", evim.vim will already have done these settings.
@@ -60,9 +61,17 @@ map <leader>0 :resize 20<cr>
 "Select All
 map <c-a> ggVG
 map <C-n> :NERDTreeToggle<CR>
-map <leader>h :noh<cr>
+map <space> :noh<cr>
 nnoremap <leader>c v$hda
 nnoremap <leader>d v$hd
+nmap B _
+inoremap <A-q> ()<esc>i
+inoremap <A-w> []<esc>i
+inoremap <A-e> {}<esc>i
+inoremap <A-r> {<esc>o}<esc>O
+inoremap <A-1> ''<esc>i
+inoremap <A-2> ""<esc>i
+inoremap <A-3> <><esc>i
 "grep settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "<nop> no operation
@@ -76,7 +85,6 @@ set backspace=indent,eol,start
 set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
 set columns=175 " full width
 set lines =53 " full height
 set equalalways
@@ -103,7 +111,8 @@ endif
 "endif
 " Only do this part when compiled with support for autocommands.
 let g:ctrlp_map = '<c-p>'
-noremap <leader>p :CtrlP 
+let g:ctrlp_working_path_mode = 0
+noremap <leader>p :CtrlPDir 
 if has("autocmd")
 
   " Enable file type detection.
@@ -146,7 +155,7 @@ if has("autocmd")
 endif " has("autocmd")
 
 set hlsearch
-set incsearch
+set incsearch " Do incremental searching
 
 colors wombat256
 "let NERDTreeShowBookmarks=1
